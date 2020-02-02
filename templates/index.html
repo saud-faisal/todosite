@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form class="" action='{%url "add"%}' method="POST">
+    {% csrf_token %}
+    <div class="">
+      <label for="">Description</label>
+      <input type="text" name="description" value="" placeholder="Description">
+    </div>
+    <div class="">
+      <label for="">Category</label>
+      <select class="" name="type">
+        <option value="online payment">online payment</option>
+        <option value="book tickets">book tickets</option>
+        <option value="order groceries">order groceries</option>
+        <option value="shopping">shopping</option>
+      </select>
+    </div>
+    <div class="">
+      <input type="submit" name="submit" value="Add Task" >
+    </div>
+    </form>
+    <form class="" action="{%url 'delete'%}" method="POST">
+      {% csrf_token %}
+    <div class="container">
+      {% for x in rec %}
+      <div class="">
+        <input type="checkbox" name="check" value="todovalue" id="id_bool"> {{x.description}} {{x.type}}
+      </div>
+      <hr>
+      {% endfor %}
+    </div>
+      <input type="submit" name="delete" value="Delete Task">
+    </form>
+  </body>
+</html>
